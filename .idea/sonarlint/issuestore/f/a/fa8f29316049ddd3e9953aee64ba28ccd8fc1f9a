@@ -1,0 +1,17 @@
+
+g	java:S112%"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8÷šü„Ú1
+€
+java:S14881"^Immediately return this expression instead of assigning it to the temporary variable "newURL".(‡Æöôùÿÿÿÿ8øšü„Ú1
+ˆ
+java:S1488;"fImmediately return this expression instead of assigning it to the temporary variable "formattedTitle".(Æ®þýùÿÿÿÿ8ùšü„Ú1
+n	java:S116"RRename this field "API_KEY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(û×çÅ8þšü„Ú1
+Z
+java:S1117">Rename "jsonObject" which hides the field declared at line 14.(ðž¸~8ƒ›ü„Ú1
+h
+java:S1858"K"response" is already a string, there's no need to call "toString()" on it.(˜ÞÜ®8‰›ü„Ú1
+]	java:S125)"<This block of commented-out lines of code should be removed.(¨ýÓÈùÿÿÿÿ8‹†â§Ú1
+M
+java:S18741"+Remove this use of "URL"; it is deprecated.(‡Æöôùÿÿÿÿ8‹›ü„Ú1
+]	java:S125?"<This block of commented-out lines of code should be removed.(Úîªˆúÿÿÿÿ8Æ–ã§Ú1
+]	java:S125J"<This block of commented-out lines of code should be removed.(ì±€þÿÿÿÿ8›ü„Ú1
+X	java:S125V"<This block of commented-out lines of code should be removed.(ªæ´«8›ü„Ú1

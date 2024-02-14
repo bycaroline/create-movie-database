@@ -1,0 +1,26 @@
+
+h
+java:S1192E"KDefine a constant instead of duplicating this literal "Director: " 6 times.(ğòıé8œ˜ïªÚ1
+k
+java:S1192g"IDefine a constant instead of duplicating this literal "Rating: " 5 times.(ëş—’ûÿÿÿÿ8îÂ“«Ú1
+j
+java:S1192C"HDefine a constant instead of duplicating this literal "Title: " 6 times.(³›‡ÿûÿÿÿÿ8œ˜ïªÚ1
+n
+java:S1192²"PDefine a constant instead of duplicating this literal "Movie not found" 4 times.(ı’Ïî8œ˜ïªÚ1
+f
+java:S1192I"IDefine a constant instead of duplicating this literal "Actors: " 6 times.(ï…8œ˜ïªÚ1
+d
+java:S1192G"GDefine a constant instead of duplicating this literal "Year: " 6 times.(í•¿˜8˜ïªÚ1
+]	java:S125"<This block of commented-out lines of code should be removed.(š›äğıÿÿÿÿ8Ö˜ïªÚ1
+L	java:S106@"+Replace this use of System.out by a logger.(´Š¥¶ùÿÿÿÿ8Ø˜ïªÚ1
+[
+java:S1117•"8Rename "year" which hides the field declared at line 22.(í¾·¯ıÿÿÿÿ8ß˜ïªÚ1
+H	java:S106²"+Replace this use of System.out by a logger.(ı’Ïî8á˜ïªÚ1
+H	java:S106Õ"+Replace this use of System.out by a logger.(ı’Ïî8ã˜ïªÚ1
+_
+java:S1117Û"<Rename "director" which hides the field declared at line 24.(û½°ÿÿÿÿÿ8ã˜ïªÚ1
+H	java:S106ç"+Replace this use of System.out by a logger.(²ñ²ª8ä˜ïªÚ1
+H	java:S106ù"+Replace this use of System.out by a logger.(ı’Ïî8å˜ïªÚ1
+H	java:S106‹"+Replace this use of System.out by a logger.(²ñ²ª8ç˜ïªÚ1
+H	java:S106œ"+Replace this use of System.out by a logger.(ı’Ïî8è˜ïªÚ1
+^	java:S125¢"<This block of commented-out lines of code should be removed.(Î­Œøÿÿÿÿ8“…«Ú1
