@@ -1,22 +1,22 @@
+/**
+ * Class for setting up the database connection
+ */
+
 package com.example.project_da_eget_fx;
 
 import java.sql.*;
 
 public class Database {
-    // Skapa URL till databasen
     private static final String DB_DATABASE = AppConfig.getDbDatabase();
-    //    private static final String DB_DRIVER = AppConfig.getDbDriver();
-//    private static final String DB_SERVER = AppConfig.getDbServer();
-    private static final String DB_PORT = AppConfig.getDbPort();
 
     private static final String DB_URL = AppConfig.getDbURL();
 
     private static final String JDBC_URL = "jdbc:" + DB_URL;
 
     private final String jdbcUsername = AppConfig.getDbUsername();
+
     private final String jdbcPassword = AppConfig.getDbPassword();
 
-    // SQL query for creating the database
     private static final String CREATE_DATABASE_SQL = "CREATE DATABASE IF NOT EXISTS " + DB_DATABASE;
 
     public Database() {

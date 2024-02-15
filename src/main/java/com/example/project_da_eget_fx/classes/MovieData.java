@@ -1,3 +1,8 @@
+/**
+ * Class for creating MovieData objects that do not have a rating.
+ * The class is used to create objects on the first search of a movie.
+ */
+
 package com.example.project_da_eget_fx.classes;
 
 public class MovieData {
@@ -7,7 +12,6 @@ public class MovieData {
     private String genre;
     private String director;
 
-    // Constructor
     public MovieData(String title, String year, String actors, String genre, String director) {
         this.title = title;
         this.year = year;
@@ -16,7 +20,6 @@ public class MovieData {
         this.director = director;
     }
 
-    // Getters
     public String getTitle() {
         return title;
     }
