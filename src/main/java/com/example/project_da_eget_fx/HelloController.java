@@ -1,3 +1,6 @@
+/**
+ * This class manages the interaction between the user interface and the underlying data.
+ */
 package com.example.project_da_eget_fx;
 
 import com.example.project_da_eget_fx.api.ApiService;
@@ -15,44 +18,50 @@ import java.util.List;
 
 public class HelloController {
     private ApiService apiService = new ApiService();
-    //private static InputHelper inputHelper = new InputHelper();
     Database database = new Database();
     MoviesDAO moviesDAO = new MoviesDAO(database);
 
+
+    /**
+     * The fields for the movie details.
+     */
     private String year;
     private String actors;
     private String director;
     private String genre;
 
+    /**
+     * Enum representing different search criteria.
+     */
+    public enum Criteria {
+        YEAR,
+        ACTOR,
+        DIRECTOR,
+        RATING
+    }
 
     @FXML
     private TextArea searchResultTextArea;
     @FXML
     private TextField textfieldTitle;
-
     @FXML
     private TextField searchDatabaseYear;
-
     @FXML
     private TextField searchDatabaseActor;
-
     @FXML
     private TextField searchDatabaseDirector;
-
     @FXML
     private TextField searchDatabaseRating;
-
     @FXML
     private TextField textFieldGiveRating;
-
     @FXML
     private Label confirmSave;
 
-
+    /**
+     * Searches for a movie by title and wheter or not it is already in the database.
+     */
     @FXML
     private void searchByTitle() {
-
-        //kolla om namn och år redan finns. I så fall skriv ut det.Annars sök efter ny.
         String title = textfieldTitle.getText();
 
         if (title.trim().isEmpty()) {
@@ -61,22 +70,28 @@ public class HelloController {
         }
 
         if (notInDatabase(title)) {
-            System.out.println("Movie in database");
+            searchResultTextArea.setText("Movie already in database");
         } else {
-            getDataFromApi(title);
-            searchResultTextArea.setText("Title: " + title
-                    + "\n" +
-                    "Director: " + director
-                    + "\n" +
-                    "Year: " + year
-                    + "\n" +
-                    "Actors: " + actors
-                    + "\n" +
-                    "Genre: " + genre
-            );
+            try{
+                getDataFromApi(title);
+                searchResultTextArea.setText("Title: " + title
+                        + "\n" +
+                        "Director: " + director
+                        + "\n" +
+                        "Year: " + year
+                        + "\n" +
+                        "Actors: " + actors
+                );
+            } catch (RuntimeException e) {
+                notFound();
+                return;
+            }
         }
     }
 
+    /**
+     * fetches data from the API and returns Object MovieData that does not contain rating.
+     */
     private MovieData getDataFromApi(String title) {
         MovieData movieData = apiService.getDataByTitle(title);
         year = movieData.getYear();
@@ -87,47 +102,58 @@ public class HelloController {
         return new MovieData(title, year, actors, genre, director);
     }
 
+    /**
+     * Checks if the movie is in the database.
+     */
     private boolean notInDatabase(String title) {
         List<Movie> movies = moviesDAO.findMovieInDatabaseByTitle(title);
 
         if (!movies.isEmpty()) {
             for (Movie movie : movies) {
                 searchResultTextArea.setText("Title: " + movie.getTitle()
-                        + "\n" +
-                        "Director: " + movie.getDirector()
-                        + "\n" +
-                        "Year: " + movie.getYear()
-                        + "\n" +
-                        "Actors: " + movie.getActors()
-                        + "\n" +
-                        "Rating: " + movie.getRating()
-                );
+                + "\n" +
+                "Director: " + movie.getDirector()
+                + "\n" +
+                "Year: " + movie.getYear()
+                + "\n" +
+                "Actors: " + movie.getActors()
+                + "\n" +
+                "Rating: " + movie.getRating()
+        );
             }
             return true;
         }
         return false;
     }
 
+    /**
+     * Sets the rating for the movie and returns it
+     */
     @FXML
     private String setRating() {
         String rating = textFieldGiveRating.getText();
-
         if (rating.trim().isEmpty() || !rating.matches("[0-5]")) {
             emptyRating();
+            return null;
         }
         return rating;
     }
 
+    /**
+     * Sets the rating and saves the movie to the database.
+     */
     @FXML
     private void setRatingAndSave() {
-        String rating = setRating();
         String title = textfieldTitle.getText();
-
         MovieData movieData = getDataFromApi(title);
         year = movieData.getYear();
         actors = movieData.getActors();
         director = movieData.getDirector();
         genre = movieData.getGenre();
+        String rating = setRating();
+        if (rating == null) {
+            return;
+        }
 
         MovieBuilder movieBuilder = new MovieBuilder(title, year, actors, director, genre, rating);
         movieBuilder.setTitle(title)
@@ -140,168 +166,95 @@ public class HelloController {
         Movie newMovie = movieBuilder.build();
         moviesDAO.addMovieToDatabase(newMovie);
         textFieldGiveRating.clear();
-        confirmSave.setText("Movie" + title + "saved to database");
+        confirmSave.setText("Movie " + title + " saved to database");
         searchResultTextArea.setText("");
     }
 
+    /**
+     * Checks which textfield is not empty and searches for the movie by that criteria.
+     */
     @FXML
-    private void searchByYear() {
+    private void search() {
         String year = searchDatabaseYear.getText();
-        List<Movie> movies = moviesDAO.findMovieInDatabaseByYear(year);
-
-        if (year.trim().isEmpty()) {
-            emptyField();
-            return;
-        }
-
-        boolean found = false;
-
-        for (Movie movie : movies) {
-            if (movie.getYear().contains(year)) {
-                searchResultTextArea.setText("Title: " + movie.getTitle()
-                        + "\n" +
-                        "Director: " + movie.getDirector()
-                        + "\n" +
-                        "Year: " + movie.getYear()
-                        + "\n" +
-                        "Actors: " + movie.getActors()
-                        + "\n" +
-                        "Rating: " + movie.getRating()
-                );
-                found = true;
-            }
-            searchDatabaseYear.clear();
-        }
-
-        if (!found) {
-            notFound();
-            System.out.println("Movie not found");
-        }
-    }
-
-    @FXML
-    private void searchByActor() {
         String actor = searchDatabaseActor.getText();
-        List<Movie> movies = moviesDAO.findMovieInDatabaseByActor(actor);
-
-        if (actor.trim().isEmpty()) {
-            emptyField();
-            return;
-        }
-
-        boolean found = false;
-
-        for (Movie movie : movies) {
-            if (movie.getActors().toLowerCase().contains(actor.toLowerCase())) {
-                searchResultTextArea.setText("Title: " + movie.getTitle()
-                        + "\n" +
-                        "Director: " + movie.getDirector()
-                        + "\n" +
-                        "Year: " + movie.getYear()
-                        + "\n" +
-                        "Actors: " + movie.getActors()
-                        + "\n" +
-                        "Rating: " + movie.getRating()
-                );
-                found = true;
-            }
-            searchDatabaseActor.clear();
-        }
-
-        if (!found) {
-            notFound();
-            System.out.println("Movie not found");
-        }
-    }
-
-    @FXML
-    private void searchByDirector() {
         String director = searchDatabaseDirector.getText();
-        List<Movie> movies = moviesDAO.findMovieInDatabaseByDirector(director);
+        String rating = searchDatabaseRating.getText();
 
-        if (director.trim().isEmpty()) {
+        if (!year.isEmpty()) {
+            searchByCriteria(year, Criteria.YEAR);
+        } else if (!actor.isEmpty()) {
+            searchByCriteria(actor, Criteria.ACTOR);
+        } else if (!director.isEmpty()) {
+            searchByCriteria(director, Criteria.DIRECTOR);
+        } else if (!rating.isEmpty()) {
+            searchByCriteria(rating, Criteria.RATING);
+        } else {
             emptyField();
-            return;
-        }
-
-        boolean found = false;
-
-        for (Movie movie : movies) {
-            if (movie.getDirector().contains(director)) {
-                System.out.println("Movie found: " + movie.getTitle());
-                searchResultTextArea.setText("Title: " + movie.getTitle()
-                        + "\n" +
-                        "Director: " + movie.getDirector()
-                        + "\n" +
-                        "Year: " + movie.getYear()
-                        + "\n" +
-                        "Actors: " + movie.getActors()
-                        + "\n" +
-                        "Rating: " + movie.getRating()
-                );
-                found = true;
-            }
-            searchDatabaseDirector.clear();
-        }
-
-        if (!found) {
-            notFound();
-            System.out.println("Movie not found");
         }
     }
 
-    @FXML
-    private void searchByRating() {
-        String rating = searchDatabaseDirector.getText();
-        List<Movie> movies = moviesDAO.findMovieInDatabaseByRating(rating);
-
-        if (rating.trim().isEmpty()) {
-            emptyField();
-            return;
+    /**
+     * Searches for a movie by different criteria.
+     */
+    private void searchByCriteria(String criteria, Criteria type) {
+        List<Movie> movies = null;
+        switch (type) {
+            case YEAR:
+                movies = moviesDAO.findMovieInDatabaseByYear(criteria);
+                break;
+            case ACTOR:
+                movies = moviesDAO.findMovieInDatabaseByActor(criteria);
+                break;
+            case DIRECTOR:
+                movies = moviesDAO.findMovieInDatabaseByDirector(criteria);
+                break;
+            case RATING:
+                movies = moviesDAO.findMovieInDatabaseByRating(criteria);
+                break;
         }
 
-        boolean found = false;
-
-        for (Movie movie : movies) {
-            if (movie.getDirector().contains(rating)) {
-                System.out.println("Movie found: " + movie.getTitle());
-                searchResultTextArea.setText("Title: " + movie.getTitle()
-                        + "\n" +
-                        "Director: " + movie.getDirector()
-                        + "\n" +
-                        "Year: " + movie.getYear()
-                        + "\n" +
-                        "Actors: " + movie.getActors()
-                        + "\n" +
-                        "Rating: " + movie.getRating()
-                );
+        if (movies.isEmpty()) {
+            notFound();
+        } else {
+            boolean found = false;
+            StringBuilder results = new StringBuilder();
+            for (Movie movie : movies) {
+                viewDetailsMovie(movie, results);
                 found = true;
             }
+            searchResultTextArea.setText(results.toString());
+            if (!found) {
+                notFound();
+            }
         }
+        clearFields();
+        confirmSave.setText("");
+    }
 
-        if (!found) {
-            notFound();
-            System.out.println("Movie not found");
-        }
+    /**
+     * Sets the prompt text for the textfields back to original.
+     */
+    private void clearFields() {
+        searchDatabaseYear.clear();
+        searchDatabaseActor.clear();
+        searchDatabaseDirector.clear();
         searchDatabaseRating.clear();
     }
 
+    /**
+     * Appends the details of the movie to the results.
+     */
+    private void viewDetailsMovie(Movie movie, StringBuilder results) {
+        results.append("Title: ").append(movie.getTitle()).append("\n")
+                .append("Director: ").append(movie.getDirector()).append("\n")
+                .append("Year: ").append(movie.getYear()).append("\n")
+                .append("Actors: ").append(movie.getActors()).append("\n")
+                .append("Rating: ").append(movie.getRating()).append("\n");
+    }
 
-//    private void viewDetailsMovie(Movie movie) {
-//        searchResultTextArea.setText("Title: " + movie.getTitle()
-//                + "\n" +
-//                "Director: " + movie.getDirector()
-//                + "\n" +
-//                "Year: " + movie.getYear()
-//                + "\n" +
-//                "Actors: " + movie.getActors()
-//                + "\n" +
-//                "Genre: " + movie.getGenre()
-//                + "\n" +
-//                "Rating: " + movie.getRating()
-//        );
-//    }
-
+    /**
+     * Alert methods for different scenarios.
+     */
     private void emptyField() {
         Alert alertEmpty = new Alert(Alert.AlertType.INFORMATION);
         alertEmpty.setTitle("Empty field");
@@ -325,5 +278,4 @@ public class HelloController {
         alertNotFound.setContentText("Try to search for another movie");
         alertNotFound.showAndWait();
     }
-
 }

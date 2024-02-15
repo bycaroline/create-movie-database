@@ -1,6 +1,9 @@
+/**
+ * Class for setting up the database and handling database operations
+ */
+
 package com.example.project_da_eget_fx.dao;
 
-import com.mysql.cj.protocol.Resultset;
 import com.example.project_da_eget_fx.Database;
 import com.example.project_da_eget_fx.classes.Movie;
 
@@ -9,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MoviesDAO {
-    private static final String CREATE_TABLE_SQL = "CREATE TABLE IF NOT EXISTS ";
     private final Database database;
 
     public MoviesDAO(Database database) {
@@ -18,19 +20,13 @@ public class MoviesDAO {
         clearMoviesTable();
     }
 
-    private void initializeTable()  {
+    /**
+     * Method for creating the table in the database
+     */
+    private void initializeTable() {
         Connection connection = database.getConnection();
 
         String tableName = "movies";
-//        String sql = "CREATE TABLE IF NOT EXISTS " + tableName + " (" +
-//                "id INT AUTO_INCREMENT PRIMARY KEY, " +
-//                "title VARCHAR(100), " +
-//                "year VARCHAR(100), " +
-//                "actors VARCHAR(255), " +
-//                "director VARCHAR(100), " +
-//                "genre VARCHAR(255)," +
-//                "rating VARCHAR(100))";
-
         String sql = "CREATE TABLE IF NOT EXISTS " + tableName + " (" +
                 "id INT AUTO_INCREMENT PRIMARY KEY, " +
                 "title VARCHAR(100), " +
@@ -49,7 +45,10 @@ public class MoviesDAO {
         }
     }
 
-    // Skapa prepared Statements
+
+    /**
+     * Setting up the SQL queries and prapared statements
+     */
     private static final String DELETE_ALL_MOVIES_SQL = "DELETE FROM movies";
     private static final String INSERT_MOVIE_SQL = "INSERT INTO movies (title, year, actors, director, genre, rating) VALUES (?,?,?,?,?,?)";
     private static final String SELECT_MOVIE_BY_TITLE_SQL = "SELECT * FROM movies WHERE title LIKE ?";
@@ -58,8 +57,9 @@ public class MoviesDAO {
     private static final String SELECT_MOVIE_BY_DIRECTOR_SQL = "SELECT * FROM movies WHERE director = ?";
     private static final String SELECT_MOVIE_BY_RATING = "SELECT * FROM movies WHERE rating = ?";
 
-    // Metoder för att hantera databasoperationer
-
+    /**
+     * Methods for handling database operations
+     */
     public void clearMoviesTable() {
         Connection connection = database.getConnection();
         try (PreparedStatement st = connection.prepareStatement(DELETE_ALL_MOVIES_SQL)) {
@@ -70,7 +70,6 @@ public class MoviesDAO {
     }
 
     public void addMovieToDatabase(Movie movie) {
-
         Connection connection = database.getConnection();
         try (PreparedStatement st = connection.prepareStatement(INSERT_MOVIE_SQL)) {
             st.setString(1, movie.getTitle());
@@ -104,7 +103,7 @@ public class MoviesDAO {
                 String genre = resultSet.getString("genre");
                 String rating = resultSet.getString("rating");
 
-                movies.add(new Movie(title,year,actors,director,genre, rating));
+                movies.add(new Movie(title, year, actors, director, genre, rating));
             }
             return movies;
         } catch (SQLException e) {
@@ -130,7 +129,7 @@ public class MoviesDAO {
                 String genre = resultSet.getString("genre");
                 String rating = resultSet.getString("rating");
 
-                movies.add(new Movie(title,year,actors,director,genre, rating));
+                movies.add(new Movie(title, year, actors, director, genre, rating));
             }
             return movies;
         } catch (SQLException e) {
@@ -155,7 +154,7 @@ public class MoviesDAO {
                 String genre = resultSet.getString("genre");
                 String rating = resultSet.getString("rating");
 
-                movies.add(new Movie(title,year,actors,director,genre, rating));
+                movies.add(new Movie(title, year, actors, director, genre, rating));
             }
             return movies;
         } catch (SQLException e) {
@@ -180,7 +179,7 @@ public class MoviesDAO {
                 String genre = resultSet.getString("genre");
                 String rating = resultSet.getString("rating");
 
-                movies.add(new Movie(title,year,actors,director,genre, rating));
+                movies.add(new Movie(title, year, actors, director, genre, rating));
             }
             return movies;
         } catch (SQLException e) {
@@ -205,32 +204,7 @@ public class MoviesDAO {
                 String genre = resultSet.getString("genre");
                 String rating = resultSet.getString("rating");
 
-                movies.add(new Movie(title,year,actors,director,genre, rating));
-            }
-            return movies;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private List<Movie> findInDatabase(String sqlQuery, String search) {
-        List<Movie> movies = new ArrayList<>();
-
-        Connection connection = database.getConnection();
-        try (PreparedStatement st = connection.prepareStatement(sqlQuery)) {
-            st.setString(1, search);
-            ResultSet resultSet = st.executeQuery();
-
-            while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String title = resultSet.getString("title");
-                String year = resultSet.getString("year");
-                String actors = resultSet.getString("actors");
-                String director = resultSet.getString("director");
-                String genre = resultSet.getString("genre");
-                String rating = resultSet.getString("rating");
-
-                movies.add(new Movie(title,year,actors,director,genre, rating));
+                movies.add(new Movie(title, year, actors, director, genre, rating));
             }
             return movies;
         } catch (SQLException e) {
@@ -238,3 +212,4 @@ public class MoviesDAO {
         }
     }
 }
+

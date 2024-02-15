@@ -1,45 +1,33 @@
 
-g	java:S1120"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8À¦÷ÖØ1
-g	java:S112D"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Á¦÷ÖØ1
-g	java:S112V"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Â¦÷ÖØ1
-g	java:S112o"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Â¦÷ÖØ1
-h	java:S112‰"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Â¦÷ÖØ1
-h	java:S112¢"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Â¦÷ÖØ1
-h	java:S112»"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Â¦÷ÖØ1
-h	java:S112Ô"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Â¦÷ÖØ1
-h	java:S112í"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¾Ô…×Ø1
+g	java:S112,"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8‡ã•ÒÚ1
+g	java:S112D"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ˆã•ÒÚ1
+g	java:S112U"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8‰ã•ÒÚ1
+g	java:S112n"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8‰ã•ÒÚ1
+h	java:S112ˆ"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8‰ã•ÒÚ1
+h	java:S112¡"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8‰ã•ÒÚ1
+h	java:S112º"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8‰ã•ÒÚ1
+h	java:S112Ó"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8‰ã•ÒÚ1
 e
-java:S1192g"IDefine a constant instead of duplicating this literal "director" 6 times.(²ï q8Ã¦÷ÖØ1
+java:S1192f"IDefine a constant instead of duplicating this literal "director" 5 times.(²ï q8Šã•ÒÚ1
 d
-java:S1192i"GDefine a constant instead of duplicating this literal "rating" 6 times.(¤À‡‚8·¶„×Ø1
+java:S1192h"GDefine a constant instead of duplicating this literal "rating" 5 times.(¤À‡‚8Šã•ÒÚ1
 h
-java:S1192d"FDefine a constant instead of duplicating this literal "title" 6 times.(¡ŞÃûÿÿÿÿ8Ã¦÷ÖØ1
+java:S1192c"FDefine a constant instead of duplicating this literal "title" 5 times.(¡ŞÃûÿÿÿÿ8Šã•ÒÚ1
 i
-java:S1192f"GDefine a constant instead of duplicating this literal "actors" 6 times.(Ä—ÀÇúÿÿÿÿ8Ã¦÷ÖØ1
+java:S1192e"GDefine a constant instead of duplicating this literal "actors" 5 times.(Ä—ÀÇúÿÿÿÿ8Šã•ÒÚ1
 h
-java:S1192h"FDefine a constant instead of duplicating this literal "genre" 6 times.(ÈŸ‹¬üÿÿÿÿ8Ã¦÷ÖØ1
-s
-java:S1192""VUse already-defined constant 'CREATE_TABLE_SQL' instead of duplicating its value here.(’ûƒ‡8Ã¦÷ÖØ1
+java:S1192g"FDefine a constant instead of duplicating this literal "genre" 5 times.(ÈŸ‹¬üÿÿÿÿ8Šã•ÒÚ1
 i
-java:S2095-"GUse try-with-resources or close this "Statement" in a "finally" clause.(ÍÃÚııÿÿÿÿ8æ§»¥Ú1
-X	java:S125 "<This block of commented-out lines of code should be removed.(°ì‘…8¯°Ç§Ú1
-G	java:S106S"+Replace this use of System.out by a logger.(™ÕÚö8Ğ¦÷ÖØ1
-G	java:S106U"+Replace this use of System.out by a logger.(Ïç¸8Ğ¦÷ÖØ1
+java:S2095)"GUse try-with-resources or close this "Statement" in a "finally" clause.(ÍÃÚııÿÿÿÿ8¦ã•ÒÚ1
+G	java:S106R"+Replace this use of System.out by a logger.(™ÕÚö8­ã•ÒÚ1
+G	java:S106T"+Replace this use of System.out by a logger.(Ïç¸8­ã•ÒÚ1
 I
-java:S1481c"'Remove this unused "id" local variable.(°æêüÿÿÿÿ8Ò¦÷ÖØ1
+java:S1481b"'Remove this unused "id" local variable.(°æêüÿÿÿÿ8¯ã•ÒÚ1
 I
-java:S1481}"'Remove this unused "id" local variable.(°æêüÿÿÿÿ8Ô¦÷ÖØ1
+java:S1481|"'Remove this unused "id" local variable.(°æêüÿÿÿÿ8²ã•ÒÚ1
 J
-java:S1481–"'Remove this unused "id" local variable.(°æêüÿÿÿÿ8Ö¦÷ÖØ1
+java:S1481•"'Remove this unused "id" local variable.(°æêüÿÿÿÿ8´ã•ÒÚ1
 J
-java:S1481¯"'Remove this unused "id" local variable.(°æêüÿÿÿÿ8×¦÷ÖØ1
+java:S1481®"'Remove this unused "id" local variable.(°æêüÿÿÿÿ8µã•ÒÚ1
 J
-java:S1481È"'Remove this unused "id" local variable.(°æêüÿÿÿÿ8Ù¦÷ÖØ1
-J
-java:S1481á"'Remove this unused "id" local variable.(°æêüÿÿÿÿ8£÷…×Ø1
-^
-java:S1128"<Remove this unused import 'com.mysql.cj.protocol.Resultset'.(«‹’ûÿÿÿÿ8¾°Ç§Ú1
-V
-java:S1068"4Remove this unused "CREATE_TABLE_SQL" private field.(‡‹•ûÿÿÿÿ8Û¦÷ÖØ1
-V
-java:S1144Ø"3Remove this unused private "findInDatabase" method.(Ú÷¿£úÿÿÿÿ8Û¦÷ÖØ1
+java:S1481Ç"'Remove this unused "id" local variable.(°æêüÿÿÿÿ8¸ã•ÒÚ1

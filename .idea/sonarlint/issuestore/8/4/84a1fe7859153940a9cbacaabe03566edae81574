@@ -1,9 +1,5 @@
 
-]	java:S125"<This block of commented-out lines of code should be removed.(ÍŒ¾‘ÿÿÿÿÿ8½½êºØ1
 L	java:S106&"+Replace this use of System.out by a logger.(õÜğÃüÿÿÿÿ8¿½êºØ1
 L	java:S106."+Replace this use of System.err by a logger.(İœìŠüÿÿÿÿ8À½êºØ1
 L	java:S106/"+Replace this use of System.err by a logger.(ÕÔ —úÿÿÿÿ8À½êºØ1
 L	java:S1060"+Replace this use of System.err by a logger.(ÑÎÖİıÿÿÿÿ8À½êºØ1
-M
-java:S1068
-"+Remove this unused "DB_PORT" private field.(ú—€øÿÿÿÿ8Â½êºØ1
