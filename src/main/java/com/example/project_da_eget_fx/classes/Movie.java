@@ -1,3 +1,7 @@
+/**
+ * Class for the Movie object
+ */
+
 package com.example.project_da_eget_fx.classes;
 
 public class Movie {
@@ -16,16 +20,6 @@ public class Movie {
         this.genre = genre;
         this.rating = rating;
     }
-
-//    // Metod för att skriva ut filmens detaljer
-//    public void printMovie() {
-//        System.out.println("Title: " + title);
-//        System.out.println("Year: " + year);
-//        System.out.println("Actors: " + actors);
-//        System.out.println("Director: " + director);
-//        System.out.println("Genre: " + genre);
-//        System.out.println("Rating: " + rating);
-//    }
 
     public String getTitle() {
         return title;

@@ -1,3 +1,7 @@
+/**
+ * MovieBuilder class is used to create a Movie object with the help of the Builder pattern.
+ */
+
 package com.example.project_da_eget_fx.classes;
 
 public class MovieBuilder {
